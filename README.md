@@ -1,6 +1,6 @@
 ## Install ##
 ```
-npm install vue-sails.io
+npm install vue-sails.io --save
 ```
 
 ## Requirements ##
