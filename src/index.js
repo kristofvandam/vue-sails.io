@@ -49,7 +49,7 @@ export default {
 					
 					for (let prop in details) {
 						if (prop == 'method') 	method   = details[prop]
-						if (prop == 'url') 		url 	 = details[prop]
+						if (prop == 'url') 	url 	 = details[prop]
 						if (prop == 'mutation') mutation = details[prop]
 					}
 
