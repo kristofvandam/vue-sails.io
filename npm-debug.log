@@ -1,0 +1,73 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'publish' ]
+2 info using npm@3.5.2
+3 info using node@v4.2.6
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/home/kristof/Development/desktop/snipsnapp.io/app/my_modules/vue-sails.io',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /home/kristof/.npm/vue-sails.io/1.0.2/package.tgz not in flight; packing
+9 info lifecycle vue-sails.io@1.0.2~prepublish: vue-sails.io@1.0.2
+10 silly lifecycle vue-sails.io@1.0.2~prepublish: no script for prepublish, continuing
+11 verbose tar pack [ '/home/kristof/.npm/vue-sails.io/1.0.2/package.tgz',
+11 verbose tar pack   '/home/kristof/Development/desktop/snipsnapp.io/app/my_modules/vue-sails.io' ]
+12 verbose tarball /home/kristof/.npm/vue-sails.io/1.0.2/package.tgz
+13 verbose folder /home/kristof/Development/desktop/snipsnapp.io/app/my_modules/vue-sails.io
+14 verbose addLocalTarball adding from inside cache /home/kristof/.npm/vue-sails.io/1.0.2/package.tgz
+15 silly cache afterAdd vue-sails.io@1.0.2
+16 verbose afterAdd /home/kristof/.npm/vue-sails.io/1.0.2/package/package.json not in flight; writing
+17 verbose afterAdd /home/kristof/.npm/vue-sails.io/1.0.2/package/package.json written
+18 silly publish { name: 'vue-sails.io',
+18 silly publish   version: '1.0.2',
+18 silly publish   description: 'sails.io.js wrapper for VueJS, only with Vuex at the moment',
+18 silly publish   main: 'dist/build.js',
+18 silly publish   scripts:
+18 silly publish    { build: 'webpack --progress --hide-modules',
+18 silly publish      dev: 'webpack --progress --hide-modules --watch' },
+18 silly publish   author: { name: 'Kristof Vandam' },
+18 silly publish   license: 'ISC',
+18 silly publish   dependencies: { 'sails.io.js': '^1.1.4', 'socket.io-client': '^1.4.6' },
+18 silly publish   devDependencies:
+18 silly publish    { 'babel-cli': '^6.11.4',
+18 silly publish      'babel-loader': '^6.2.5',
+18 silly publish      'babel-preset-es2015': '^6.3.13',
+18 silly publish      webpack: '^2.2.0-rc.3' },
+18 silly publish   readme: '## Install ##\n```\nnpm install vue-sails.io --save\n```\n\n## Requirements ##\nAt the moment Vuex is required to work\n\n## Use ##\n### Use the plugin ###\nIn the main file where you bootstrap most of your plugin add \'VueSailsIO\'\n```\nimport VueSailsIO from \'vue-sails.io\'\nVue.use(VueSailsIO, \'http://localhost:1337\')\n```\n### In a Vue-component ###\nAdd the object \'sails\', create one or more named objects,  \n```\n<template lang="pug">\nsection.container\n  .columns\n    .column.is-narrow\n      form(@submit.prevent="user({ username: username })")\n        p.control.has-addons\n          input.input(type="text" v-model="username" placeholder="Text")\n          button.button(type="submit") Send\n    .column\n      .box\n        article.media(v-for="user of users") {{ user.username }}\n</template>\n\n<script>\nimport { mapGetters } from \'vuex\'\nexport default {\n  computed: {\n    ...mapGetters([ \'users\' ])\n  },\n  sails: {\n    user: {\n      method: \'get\',      // required, options are: get, post, put, delete\n      url:  \'/user\',      // optional, defaults to \'/\' + [the object name] (this case \'/user\')\n      mutation: \'users\',  // optional, defaults to [the object name], can be false to not create a listener\n      remove: false       // optional, defaults to true, remove the listener when component is destroyed\n    }\n  },\n  data () {\n    return {\n      username: \'\'\n    }\n  }\n}\n</script>\n```\n### Manually ###\nThe sails object is mapped to \'this.$sails\'\n\nThe following functions are exposed:\n\n1. this.$sails.addListener(socket, mutation)\n2. this.$sails.removeListener(socket)\n3. this.$sails.hasListener(socket)\n4. this.$sails.socket.get(url, data) // or post, delete, put\n5. this.$sails.socket.on(url, function(data) {})\n',
+18 silly publish   readmeFilename: 'README.md',
+18 silly publish   gitHead: '79ad9c65d92460d77ed3d7f4c63a2fb31ad22509',
+18 silly publish   _id: 'vue-sails.io@1.0.2',
+18 silly publish   _shasum: 'b9fe4f40106a0a911cfcdfbcd36257de4a6a8bcb',
+18 silly publish   _from: '.' }
+19 verbose getPublishConfig undefined
+20 silly mapToRegistry name vue-sails.io
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry uri https://registry.npmjs.org/vue-sails.io
+24 verbose publish registryBase https://registry.npmjs.org/
+25 silly publish uploading /home/kristof/.npm/vue-sails.io/1.0.2/package.tgz
+26 verbose stack Error: auth required for publishing
+26 verbose stack     at CachingRegistryClient.publish (/usr/share/npm/node_modules/npm-registry-client/lib/publish.js:30:14)
+26 verbose stack     at /usr/share/npm/lib/publish.js:137:14
+26 verbose stack     at mapToRegistry (/usr/share/npm/lib/utils/map-to-registry.js:55:3)
+26 verbose stack     at publish_ (/usr/share/npm/lib/publish.js:106:3)
+26 verbose stack     at Array.<anonymous> (/usr/share/npm/node_modules/slide/lib/bind-actor.js:15:8)
+26 verbose stack     at LOOP (/usr/share/npm/node_modules/slide/lib/chain.js:15:14)
+26 verbose stack     at LOOP (/usr/share/npm/node_modules/slide/lib/chain.js:14:28)
+26 verbose stack     at chain (/usr/share/npm/node_modules/slide/lib/chain.js:20:5)
+26 verbose stack     at /usr/share/npm/lib/publish.js:72:5
+26 verbose stack     at RES (/usr/share/npm/node_modules/inflight/inflight.js:23:14)
+27 verbose cwd /home/kristof/Development/desktop/snipsnapp.io/app/my_modules/vue-sails.io
+28 error Linux 4.8.0-39-generic
+29 error argv "/usr/bin/nodejs" "/usr/bin/npm" "publish"
+30 error node v4.2.6
+31 error npm  v3.5.2
+32 error code ENEEDAUTH
+33 error need auth auth required for publishing
+34 error need auth You need to authorize this machine using `npm adduser`
+35 verbose exit [ 1, true ]

@@ -1,6 +1,6 @@
 {
   "name": "vue-sails.io",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "sails.io.js wrapper for VueJS, only with Vuex at the moment",
   "main": "dist/build.js",
   "scripts": {

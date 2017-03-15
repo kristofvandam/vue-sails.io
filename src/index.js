@@ -52,7 +52,7 @@ export default {
 					let details = sails[socket]
 					
 					let method
-					let url 	  = '/' + socket
+					let url       = '/' + socket
 					let mutation  = socket
 					
 					for (let prop in details) {
@@ -62,7 +62,9 @@ export default {
 					}
 
 					_this[socket] = (data) => {
-						io.socket[method](url, data)
+						io.socket[method](url, data, (body, JWR) => {
+							_this.$store.commit(mutation.toUpperCase(), body)
+						})
 					}
 
 					if (mutation && ! _this.$sails.hasListener(socket)) {
