@@ -40,7 +40,7 @@
 18 silly publish      webpack: '^2.2.0-rc.3' },
 18 silly publish   readme: '## Install ##\n```\nnpm install vue-sails.io --save\n```\n\n## Requirements ##\nAt the moment Vuex is required to work\n\n## Use ##\n### Use the plugin ###\nIn the main file where you bootstrap most of your plugin add \'VueSailsIO\'\n```\nimport VueSailsIO from \'vue-sails.io\'\nVue.use(VueSailsIO, \'http://localhost:1337\')\n```\n### In a Vue-component ###\nAdd the object \'sails\', create one or more named objects,  \n```\n<template lang="pug">\nsection.container\n  .columns\n    .column.is-narrow\n      form(@submit.prevent="user({ username: username })")\n        p.control.has-addons\n          input.input(type="text" v-model="username" placeholder="Text")\n          button.button(type="submit") Send\n    .column\n      .box\n        article.media(v-for="user of users") {{ user.username }}\n</template>\n\n<script>\nimport { mapGetters } from \'vuex\'\nexport default {\n  computed: {\n    ...mapGetters([ \'users\' ])\n  },\n  sails: {\n    user: {\n      method: \'get\',      // required, options are: get, post, put, delete\n      url:  \'/user\',      // optional, defaults to \'/\' + [the object name] (this case \'/user\')\n      mutation: \'users\',  // optional, defaults to [the object name], can be false to not create a listener\n      remove: false       // optional, defaults to true, remove the listener when component is destroyed\n    }\n  },\n  data () {\n    return {\n      username: \'\'\n    }\n  }\n}\n</script>\n```\n### Manually ###\nThe sails object is mapped to \'this.$sails\'\n\nThe following functions are exposed:\n\n1. this.$sails.addListener(socket, mutation)\n2. this.$sails.removeListener(socket)\n3. this.$sails.hasListener(socket)\n4. this.$sails.socket.get(url, data) // or post, delete, put\n5. this.$sails.socket.on(url, function(data) {})\n',
 18 silly publish   readmeFilename: 'README.md',
-18 silly publish   gitHead: '79ad9c65d92460d77ed3d7f4c63a2fb31ad22509',
+18 silly publish   gitHead: 'cda678dace9c82e16ec1154faef652e3daa77652',
 18 silly publish   _id: 'vue-sails.io@1.0.2',
 18 silly publish   _shasum: 'b9fe4f40106a0a911cfcdfbcd36257de4a6a8bcb',
 18 silly publish   _from: '.' }
@@ -51,23 +51,47 @@
 23 silly mapToRegistry uri https://registry.npmjs.org/vue-sails.io
 24 verbose publish registryBase https://registry.npmjs.org/
 25 silly publish uploading /home/kristof/.npm/vue-sails.io/1.0.2/package.tgz
-26 verbose stack Error: auth required for publishing
-26 verbose stack     at CachingRegistryClient.publish (/usr/share/npm/node_modules/npm-registry-client/lib/publish.js:30:14)
-26 verbose stack     at /usr/share/npm/lib/publish.js:137:14
-26 verbose stack     at mapToRegistry (/usr/share/npm/lib/utils/map-to-registry.js:55:3)
-26 verbose stack     at publish_ (/usr/share/npm/lib/publish.js:106:3)
-26 verbose stack     at Array.<anonymous> (/usr/share/npm/node_modules/slide/lib/bind-actor.js:15:8)
-26 verbose stack     at LOOP (/usr/share/npm/node_modules/slide/lib/chain.js:15:14)
-26 verbose stack     at LOOP (/usr/share/npm/node_modules/slide/lib/chain.js:14:28)
-26 verbose stack     at chain (/usr/share/npm/node_modules/slide/lib/chain.js:20:5)
-26 verbose stack     at /usr/share/npm/lib/publish.js:72:5
-26 verbose stack     at RES (/usr/share/npm/node_modules/inflight/inflight.js:23:14)
-27 verbose cwd /home/kristof/Development/desktop/snipsnapp.io/app/my_modules/vue-sails.io
-28 error Linux 4.8.0-39-generic
-29 error argv "/usr/bin/nodejs" "/usr/bin/npm" "publish"
-30 error node v4.2.6
-31 error npm  v3.5.2
-32 error code ENEEDAUTH
-33 error need auth auth required for publishing
-34 error need auth You need to authorize this machine using `npm adduser`
-35 verbose exit [ 1, true ]
+26 verbose request uri https://registry.npmjs.org/vue-sails.io
+27 verbose request sending authorization for write operation
+28 info attempt registry request try #1 at 10:30:17 PM
+29 verbose request using bearer token for auth
+30 verbose request id 6743df739069e23f
+31 http request PUT https://registry.npmjs.org/vue-sails.io
+32 http 403 https://registry.npmjs.org/vue-sails.io
+33 verbose headers { 'content-type': 'application/json',
+33 verbose headers   'cache-control': 'max-age=300',
+33 verbose headers   'content-length': '106',
+33 verbose headers   'accept-ranges': 'bytes',
+33 verbose headers   date: 'Wed, 15 Mar 2017 21:30:19 GMT',
+33 verbose headers   via: '1.1 varnish',
+33 verbose headers   connection: 'keep-alive',
+33 verbose headers   'x-served-by': 'cache-ams4421-AMS',
+33 verbose headers   'x-cache': 'MISS',
+33 verbose headers   'x-cache-hits': '0',
+33 verbose headers   'x-timer': 'S1489613417.784546,VS0,VE1513',
+33 verbose headers   vary: 'Accept-Encoding' }
+34 verbose request invalidating /home/kristof/.npm/registry.npmjs.org/vue-sails.io on PUT
+35 error publish Failed PUT 403
+36 verbose stack Error: you do not have permission to publish "vue-sails.io". Are you logged in as the correct user? : vue-sails.io
+36 verbose stack     at makeError (/usr/share/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+36 verbose stack     at CachingRegistryClient.<anonymous> (/usr/share/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+36 verbose stack     at Request._callback (/usr/share/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+36 verbose stack     at Request.self.callback (/usr/share/npm/node_modules/request/request.js:198:22)
+36 verbose stack     at emitTwo (events.js:87:13)
+36 verbose stack     at Request.emit (events.js:172:7)
+36 verbose stack     at Request.<anonymous> (/usr/share/npm/node_modules/request/request.js:1082:10)
+36 verbose stack     at emitOne (events.js:82:20)
+36 verbose stack     at Request.emit (events.js:169:7)
+36 verbose stack     at IncomingMessage.<anonymous> (/usr/share/npm/node_modules/request/request.js:1009:12)
+37 verbose statusCode 403
+38 verbose pkgid vue-sails.io
+39 verbose cwd /home/kristof/Development/desktop/snipsnapp.io/app/my_modules/vue-sails.io
+40 error Linux 4.8.0-39-generic
+41 error argv "/usr/bin/nodejs" "/usr/bin/npm" "publish"
+42 error node v4.2.6
+43 error npm  v3.5.2
+44 error code E403
+45 error you do not have permission to publish "vue-sails.io". Are you logged in as the correct user? : vue-sails.io
+46 error If you need help, you may report this error at:
+46 error     <https://github.com/npm/npm/issues>
+47 verbose exit [ 1, true ]

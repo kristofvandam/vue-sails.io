@@ -61,3 +61,8 @@ The following functions are exposed:
 3. this.$sails.hasListener(socket)
 4. this.$sails.socket.get(url, data) // or post, delete, put
 5. this.$sails.socket.on(url, function(data) {})
+
+### Changelog ###
+
+#### 1.0.2 ####
+No need to manually create mutation
